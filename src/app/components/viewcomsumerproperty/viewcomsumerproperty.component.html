@@ -1,0 +1,84 @@
+
+<app-navbar></app-navbar>
+<h4 style="text-align: center;">View Consumer Property</h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+    <form class="form-horizontal" #viewcbForm="ngForm"  id="viewForm" (ngSubmit)="viewConsumerProperty(consumerId,propertyId)">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="consumerId">Consumer Id :</label>
+            <div class="col-sm-10">
+            <input type="text"  required class="form-control" name="consumerId" [(ngModel)]="consumerId" placeholder="Enter Consumer Id"/>
+          </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="propertyId">Property Id :</label>
+            <div class="col-sm-10">
+            <input type="text"  required class="form-control" name="propertyId" [(ngModel)]="propertyId"  placeholder="Enter Property Id"/>
+          </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="viewcbForm.form.invalid" type="submit" data-toggle="modal" data-target="#exampleModal">View Consumer Property</button>
+        <br>
+        <br>
+        
+        <!-- <button  class="btn btn-info"> Go To Homepage </button></a> 
+         -->
+    </form>
+</div>
+
+<div style="padding-top:10%" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <div>
+                  <table class="table table-bordered">
+                    <h3><strong>Consumer Property Details</strong></h3>
+                    <tbody>
+                      <tr>
+                        <td><strong>Consumer ID </strong></td>
+                        <td>{{consumerProperty.consumerId}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Property ID </strong></td>
+                        <td>{{consumerProperty.propertyId}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Building Area (sqft)  </strong></td>
+                        <td>{{consumerProperty.buildingSqft}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Building Type </strong></td>
+                        <td>{{consumerProperty.buildingType}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Building Storeys </strong></td>
+                        <td>{{consumerProperty.buildingStoreys}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Building Age </strong></td>
+                        <td>{{consumerProperty.buildingAge}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Cost Of Asset </strong></td>
+                        <td>{{consumerProperty.costOfTheAsset}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Salvage Value </strong></td>
+                        <td>{{consumerProperty.salvageValue}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Useful Life Of The Asset</strong></td>
+                        <td>{{consumerProperty.usefulLifeOfTheAsset}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Property Value </strong></td>
+                        <td>{{consumerProperty.propertyValue}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>

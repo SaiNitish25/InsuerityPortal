@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-sm firstclass  navbar-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLinkActive="active" routerLink="/">Policy Administration System</a>
+    <button *ngIf="isLoggedIn" style="color:black" (click)="logout()" id="logout">Logout</button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+</nav>
+<div class="nav-spacer"></div>

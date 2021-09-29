@@ -1,0 +1,98 @@
+
+<app-navbar></app-navbar>
+<h4 style="text-align: center;">View Consumer Business</h4>
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+    <form #viewcbForm="ngForm" (ngSubmit)="viewConsumerBusiness(consumerId,businessId)" id="viewForm">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="consumerId">Consumer Id :</label>
+            <div class="col-sm-10">
+            <input type="text" required  #cbId="ngModel" class="form-control" name="consumerId" [(ngModel)]="consumerId" placeholder="Enter Consumer Id"/>
+            </div>
+          </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="businessId">Business Id :</label>
+            <div class="col-sm-10">
+            <input type="text" required  #bId="ngModel" class="form-control" name="bId" [(ngModel)]="businessId" placeholder="Enter Business Id"/>
+          </div>
+          </div>
+        <button class="btn btn-primary" [disabled]="viewcbForm.form.invalid" type="submit" data-toggle="modal" data-target="#exampleModal">View Consumer Business</button>
+    </form>
+</div>
+
+
+<div style="padding-top:5%" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-body">
+              <div>
+                  <table class="table table-bordered">
+                    <h3><strong>Consumer Business Details</strong></h3>
+                    <tbody>
+                      <tr>
+                        <td><strong>Consumer ID </strong></td>
+                        <td>{{consumerBusiness.consumerId}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Consumer Name </strong></td>
+                        <td>{{consumerBusiness.consumerName}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Email </strong></td>
+                        <td>{{consumerBusiness.email}}</td>
+                      </tr>
+                      <!-- <tr>
+                        <td><strong>PAN </strong></td>
+                        <td>{{consumerBusiness.pan}}</td>
+                      </tr> -->
+                      <tr>
+                        <td><strong>Agent ID </strong></td>
+                        <td>{{consumerBusiness.agentId}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Agent Name </strong></td>
+                        <td>{{consumerBusiness.agentName}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Business ID </strong></td>
+                        <td>{{consumerBusiness.businessId}}</td>
+                      </tr>
+
+                      <tr>
+                        <td><strong>Validity Of Consumer </strong></td>
+                        <td>{{consumerBusiness.validityofConsumer}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Business Overview </strong></td>
+                        <td>{{consumerBusiness.businessOverview}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Business Type </strong></td>
+                        <td>{{consumerBusiness.businessType}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Annual Turnover </strong></td>
+                        <td>{{consumerBusiness.annualTurnOver}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Total Employees </strong></td>
+                        <td>{{consumerBusiness.totalEmployees}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Capital Invested </strong></td>
+                        <td>{{consumerBusiness.capitalInvested}}</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Business Value </strong></td>
+                        <td>{{consumerBusiness.businessValue}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<br><br>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>

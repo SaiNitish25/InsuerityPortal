@@ -1,0 +1,80 @@
+<app-navbar></app-navbar>
+<h4 style="text-align: center;">Issue Policy</h4>
+<notifier-container style="position: fixed; bottom: 100px; right: 30px"></notifier-container>
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+            <div class="tabs">
+              <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                <label for="tab-1" class="tab-label">Enter Policy Details</label>
+                <div class="tab-content">
+        <div class="col-sm-8">
+            <form #createcbForm="ngForm" id="createform">
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="pId">Policy ID : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required pattern="[P]{1}[0-9]{2}" #pId="ngModel" [class.is-invalid]="pId.touched && pId.invalid" class="form-control" name="pId" [(ngModel)]="cb.policyId" (click)="onClick()" placeholder="Policy ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="pId.valid || pId.untouched" class="text-danger">Policy ID is Required & should be like P01-P09</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cId">Consumer ID : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="text" required pattern="[C]{1}[0-9]{2}" #cId="ngModel" [class.is-invalid]="cId.touched && cId.invalid" class="form-control" name="cId" [(ngModel)]="cb.consumerId" (click)="onClick()" placeholder="Consumer ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cId.valid || cId.untouched" class="text-danger">Consumer ID is required & should be like C01-C09</small>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="bId">Business ID : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required pattern="[B]{1}[0-9]{2}" #bId="ngModel" [class.is-invalid]="bId.touched && bId.invalid" class="form-control" name="bId" [(ngModel)]="cb.businessId" (click)="onClick()" placeholder="Business ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="bId.valid || bId.untouched" class="text-danger">Business ID is Required & should be like B01-B09</small>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="pDetail">Payment Details : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required min="4" max="20" #pDetail="ngModel" [class.is-invalid]="pDetail.touched && pDetail.invalid" class="form-control" name="pDetail" [(ngModel)]="cb.paymentDetails" (click)="onClick()" placeholder="Payment Details"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="pDetail.valid || pDetail.untouched" class="text-danger">Payment Details must be 4-20 characters long</small>
+                    </div>
+                </div>
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="aStatus">Accepted Status: </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required min="4" max="20" #aStatus="ngModel" [class.is-invalid]="aStatus.touched && aStatus.invalid" class="form-control" name="aStatus" [(ngModel)]="cb.acceptanceStatus" (click)="onClick()" placeholder="Accepted Status"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="aStatus.valid || aStatus.untouched" class="text-danger">Accepted Status must be 4-20 characters long</small>
+                    </div>
+                </div>
+                <button [disabled]="createcbForm.form.invalid" (click)="issuePolicy()" type="submit">Issue Policy</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <p class="text-danger m-2">{{errorMessage}}</p>
+</div>
+</div>
+</div>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>

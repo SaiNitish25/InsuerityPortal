@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<!-- <h1 style="background-color:cyan;  margin-top: 5px; text-align: center;" class="text-dark">Login Form</h1> -->
+<div class="content" style="background-color: lightgray;">
+  <header style="color: black;">Agent Login</header>
+  <form #agentForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="field">
+          <span class="fa fa-user"></span>
+          <input type="text" required pattern="^[a-zA-Z0-9_\s,-]{4,}" #username="ngModel" [class.is-invalid]="username.touched && username.invalid" class="form-control" name="username" [(ngModel)]="agent.username" (click)="onClick()" placeholder="Enter Your Username">          
+      </div>
+      <small [class.d-none]="username.valid || username.untouched" class="text-danger">Username must be 4 characters long.</small>
+      <div class="field space">
+          <span class="fa fa-lock"></span>
+          <input type="password" required pattern="^[a-zA-Z0-9_!@#$%^&*\s,-]{6,}" #password="ngModel" [class.is-invalid]="password.touched && password.invalid" class="form-control" name="password" [(ngModel)]="agent.password" (click)="onClick()"placeholder="Enter Your Password">
+      </div>
+      <small [class.d-none]="password.valid || password.untouched" class="text-danger">Password must be 6 characters long.</small>  
+      <p class="text-danger m-2">{{authMessage}}</p>
+      <div class="field space">
+        <input type="submit" [disabled]="agentForm.form.invalid"  id="login" value="LOGIN"> 
+    </div>
+  </form>
+</div>

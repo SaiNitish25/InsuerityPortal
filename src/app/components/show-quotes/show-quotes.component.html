@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+
+<div class="container text-center" *ngIf="!requestSent">
+    <form #getQuotesForm="ngForm" (ngSubmit)="onSubmit()" id="viewForm">
+        <input type="number" required min="1" #cId="ngModel" [class.is-invalid]="cId.touched && cId.invalid" class="form-control" name="cId" [(ngModel)]="id" (click)="onClick()" placeholder="Enter Consumer Id"/>
+        <small [class.d-none]="cId.valid || cId.untouched" class="text-danger">Value must be greater that 0.</small>
+        <p class="text-danger m-2">{{errorMessage}}</p>
+        <button id="x" [disabled]="getQuotesForm.form.invalid" type="submit" class="b1">Get Available Quotes</button>
+    </form>
+</div>
+
+
+<div class="container" *ngIf="requestSent">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 my-3" *ngFor="let quote of quotes">
+            <div class="card card-1" style="width: 18rem;">
+                <div class="top">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Property Type : <b>Building</b> </li>
+                  <li class="list-group-item">Property Value Range : <b>{{quote.propertyValueRangeFrom}} - {{quote.propertyValueRangeTo}}</b> </li>
+                  <li class="list-group-item">Business Value Range : <b>{{quote.businessValueRangeFrom}} - {{quote.businessValueRangeTo}}</b> </li>
+                  <li class="list-group-item">Quote : <b>{{quote.quote}}</b> </li>
+                </ul>
+               </div>
+            <div class="bottom">
+                <button class="btn">Issue Policy</button>
+            </div>
+              </div>
+        </div>
+    </div>
+    
+</div>
+

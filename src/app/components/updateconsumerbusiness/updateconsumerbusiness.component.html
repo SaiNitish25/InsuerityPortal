@@ -1,0 +1,238 @@
+<app-navbar></app-navbar>
+<h4 style="text-align: center;">Update Consumer Business</h4>
+<notifier-container style="position: fixed; bottom: 100px; right: 30px"></notifier-container>
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+            <div class="tabs">
+              <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                <label for="tab-1" class="tab-label">Update</label>
+                <div class="tab-content">
+                  <div class="col-sm-8">
+                    <form #updatecbForm="ngForm" id="updateform">
+                    <div class="row g-3 align-items-center">
+                      <div class="col-auto">
+                          <label for="cId">Consumer ID : </label>
+                      </div>
+                      <div class="col-auto">
+                      <input type="text" required #cId="ngModel" [class.is-invalid]="cId.touched && cId.invalid" class="form-control" name="cId" [(ngModel)]="cb.consumerId" (click)="onClick()" placeholder="Consumer ID"/>
+                      </div>
+                      <div class="col-auto">
+                          <small [class.d-none]="cId.valid || cId.untouched" class="text-danger">Consumer ID is required</small>
+                      </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="bId">Business ID : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required #bId="ngModel" [class.is-invalid]="bId.touched && bId.invalid" class="form-control" name="bId" [(ngModel)]="cb.businessId" (click)="onClick()" placeholder="Business ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="bId.valid || bId.untouched" class="text-danger">Business ID is Required</small>
+                    </div>
+                </div>
+              </form>
+                  </div>
+                </div>
+              </div>
+              <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-2" class="tab-switch" (change)="viewConsumerBusiness(cb.consumerId,cb.businessId)">
+                <label for="tab-2" class="tab-label">Consumer Details</label>
+                <div class="tab-content">
+        <div class="col-sm-8">
+
+            <form #createcbForm="ngForm" id="createform">
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cId">Consumer ID : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="text" required #cId="ngModel" [class.is-invalid]="cId.touched && cId.invalid" class="form-control" name="cId" [(ngModel)]="cb.consumerId" (click)="onClick()" placeholder="Consumer ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cId.valid || cId.untouched" class="text-danger">Consumer ID is required</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cName">Consumer Name : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="text" required min="4" max="20" #cName="ngModel" [class.is-invalid]="cName.touched && cName.invalid" class="form-control" name="cName" [(ngModel)]="cb.consumerName" (click)="onClick()" placeholder="Consumer Name"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cName.valid || cName.untouched" class="text-danger">Consumer Name must be 4-20 characters long</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cEmail">Consumer Email : </label>
+                    </div>
+                    <div class="col-auto">
+                        <input type="email" required #cEmail="ngModel" [class.is-invalid]="cEmail.touched && cEmail.invalid"  required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" class="form-control" name="cEmail" [(ngModel)]="cb.email" (click)="onClick()" placeholder="Consumer Email"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cEmail.valid || cEmail.untouched" class="text-danger">Please enter valid email</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cPan">Consumer Pan : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="text" required #cPan="ngModel" [class.is-invalid]="cPan.touched && cPan.invalid" required pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}"class="form-control" name="cPan" [(ngModel)]="cb.pan" (click)="onClick()" placeholder="Consumer PAN"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cPan.valid || cPan.untouched" class="text-danger">Please enter valid PAN</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="agent">Agent ID : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input  type="number" required #agent="ngModel" [class.is-invalid]="agent.touched && agent.invalid" class="form-control" name="agent" [(ngModel)]="cb.agentId" (click)="onClick()" placeholder="Agent ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="agent.valid || agent.untouched" class="text-danger">Please enter valid Agent ID</small>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="agentName">Agent Name : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input  type="text" required #agentName="ngModel" [class.is-invalid]="agentName.touched && agentName.invalid" class="form-control" name="agentName" [(ngModel)]="cb.agentName" (click)="onClick()" placeholder="Agent Name"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="agentName.valid || agentName.untouched" class="text-danger">Please enter valid Agent Name</small>
+                    </div>
+                   
+                </div>
+
+                <button type="submit" (click)="UpdateConsumer()">Update Consumer Business</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="tab">
+      <input type="radio" name="css-tabs" id="tab-3" class="tab-switch" (change)="viewConsumerBusiness(cb.consumerId,cb.businessId)">
+      <label for="tab-3" class="tab-label">Business Details</label>
+      <div class="tab-content">
+        <div class="col-sm-8">
+            <form #createcbForm="ngForm" id="createform">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="bId">Business ID : </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" required #bId="ngModel" [class.is-invalid]="bId.touched && bId.invalid" class="form-control" name="bId" [(ngModel)]="cb.businessId" (click)="onClick()" placeholder="Business ID"/>
+                        </div>
+                        <div class="col-auto">
+                            <small [class.d-none]="bId.valid || bId.untouched" class="text-danger">Business ID is Required</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="cVal">Validity Of Consumer : </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="number" required #cVal="ngModel" [class.is-invalid]="cVal.touched && cVal.invalid" class="form-control" name="cVal" [(ngModel)]="cb.validityofConsumer" (click)="onClick()" placeholder="Consumer Validity"/>
+                        </div>
+                        <div class="col-auto">
+                            <small [class.d-none]="cVal.valid || cVal.untouched" class="text-danger">Consumer Validity is Required</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="bOver">Business Overview : </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" required #bOver="ngModel" [class.is-invalid]="bOver.touched && bOver.invalid" class="form-control" name="bOver" [(ngModel)]="cb.businessOverview" (click)="onClick()" placeholder="Business Overview"/>
+                        </div>
+                        <div class="col-auto">
+                            <small [class.d-none]="bOver.valid || bOver.untouched" class="text-danger">Business Overview is Required</small>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 align-items-center">
+                        <div class="col-auto">
+                            <label for="bType">Business Type : </label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="text" required #bType="ngModel" [class.is-invalid]="bType.touched && bType.invalid" class="form-control" name="bType" [(ngModel)]="cb.businessType" (click)="onClick()" placeholder="Business Type"/>
+                            <!--<select required #bType="ngModel" [class.is-invalid]="bType.touched && bType.invalid" class="form-control" name="bType" [(ngModel)]="cb.businessType" (click)="onClick()" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                                <option value="1">SoleProprietorship</option>
+                                <option value="2">Partnership</option>
+                                <option value="3">LimitedPartnership</option>
+                                <option value="4">LimitedLiabilityCompany</option>
+                                <option value="5">Corporation</option>
+                                <option value="6">NonProfit</option>
+                                <option value="7">Cooperative</option>
+                              </select>-->
+                        </div>
+                        <div class="col-auto">
+                            <small [class.d-none]="bType.valid || bType.untouched" class="text-danger">Business Type is Required</small>
+                        </div>
+                    </div>
+
+
+
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="at">Annual Turnover : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" min="1000" required #at="ngModel" [class.is-invalid]="at.touched && at.invalid" class="form-control" name="at" [(ngModel)]="cb.annualTurnOver" (click)="onClick()" placeholder="Annual Turnover"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="at.valid || at.untouched" class="text-danger">Required & Minimum Annual Turnover must be 1000</small>
+                    </div>
+                  </div>
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="te">Total Employees : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" min="10" required #te="ngModel" [class.is-invalid]="te.touched && te.invalid" class="form-control" name="te" [(ngModel)]="cb.totalEmployees" (click)="onClick()" placeholder="Total Employees"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="te.valid || te.untouched" class="text-danger">Required & Minimum Employees must be 10</small>
+                    </div>
+                  </div>
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="ci">Capital Invested : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" min="2000000" required #ci="ngModel" [class.is-invalid]="ci.touched && ci.invalid" class="form-control" name="ci" [(ngModel)]="cb.capitalInvested" (click)="onClick()" placeholder="Capital Invested"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="ci.valid || ci.untouched" class="text-danger">Required & Minimum Capital Invested must be 2000000</small>
+                    </div>
+                  </div>
+                  <button   type="submit" (click)="UpdateConsumer()">Update Consumer Business</button>
+                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <p class="text-danger m-2">{{errorMessage}}</p>
+</div>
+</div>
+</div>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>

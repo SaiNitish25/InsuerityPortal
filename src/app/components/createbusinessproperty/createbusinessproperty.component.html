@@ -1,0 +1,158 @@
+<app-navbar></app-navbar>
+<h4 style="text-align: center;">Create Business Property</h4>
+<notifier-container style="position: fixed; bottom: 100px; right: 30px"></notifier-container>
+<div class="container-fluid">
+    <div class="row">
+        <div class="wrapper">
+            <div class="tabs">
+              <div class="tab">
+                <input type="radio" name="css-tabs" id="tab-1" checked class="tab-switch">
+                <label for="tab-1" class="tab-label">Consumer Details</label>
+                <div class="tab-content">
+        <div class="col-sm-8">
+           
+            <form #createcbForm="ngForm" id="createform">
+                
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="cId">Consumer ID : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="text" required  pattern="[C]{1}[0-9]{2}" #cId="ngModel" [class.is-invalid]="cId.touched && cId.invalid" class="form-control" name="cId" [(ngModel)]="bp.consumerId" (click)="onClick()" placeholder="Consumer ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="cId.valid || cId.untouched" class="text-danger">Consumer ID is required & should be like C01-C09</small>
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+
+        </div>
+    </div>
+    <div class="tab">
+      <input type="radio" name="css-tabs" id="tab-3" class="tab-switch">
+      <label for="tab-3" class="tab-label">Property Details</label>
+      <div class="tab-content">
+
+        <div class="col-sm-8">
+           
+            <form #createcbForm="ngForm" id="createform">
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="pId">Property ID : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="text" required pattern="[P]{1}[0-9]{2}" #pId="ngModel" [class.is-invalid]="pId.touched && pId.invalid" class="form-control" name="pId" [(ngModel)]="bp.propertyId" (click)="onClick()" placeholder="Property ID"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="pId.valid || pId.untouched" class="text-danger">Property ID is required & should be like P01-P09</small>
+                    </div>
+                </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="bsf">Building Square Ft. : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required min="10" max="9999" #bsf="ngModel" [class.is-invalid]="bsf.touched && bsf.invalid" class="form-control" name="bsf" [(ngModel)]="bp.buildingSqft" (click)="onClick()" placeholder="Building Square Ft."/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="bsf.valid || bsf.untouched" class="text-danger">Area must be between 10 to 9999 Sq.Ft</small>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="btype">Property Type </label>
+                    </div>
+                    <div class="col-auto">
+                    <!-- <input type="text" required #btype="ngModel" [class.is-invalid]="btype.touched && btype.invalid" class="form-control" name="btype" [(ngModel)]="cb.buildingType" (click)="onClick()" placeholder="Building Type"/> -->
+                    <select required #btype="ngModel" [class.is-invalid]="btype.touched && btype.invalid" class="form-control" name="btype" [(ngModel)]="bp.buildingType" (click)="onClick()" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                    
+                        <option value="Building">Building</option>
+                        <option value="Equipment">Equipment</option>
+                        <option value="Singage">Inventory</option>
+                        <option value="Furniture">Furniture</option>
+                        
+                      </select>
+                </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="btype.valid || btype.untouched" class="text-danger">Building Type is required</small>
+                    </div>
+                </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="st">Building Storeys : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required min="1" #st="ngModel" [class.is-invalid]="st.touched && st.invalid" class="form-control" name="st" [(ngModel)]="bp.buildingStoreys" (click)="onClick()" placeholder="Building Storeys"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="st.valid || st.untouched" class="text-danger">Minimum 1 storey building</small>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="pa">Building Age : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required min="1" max="100" #pa="ngModel" [class.is-invalid]="pa.touched && pa.invalid" class="form-control" name="pa" [(ngModel)]="bp.buildingAge" (click)="onClick()" placeholder="Building Age"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="pa.valid || pa.untouched" class="text-danger">Building age must be between 1-100</small>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="coa">Cost of the Asset : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required min="10" max="999999999" #coa="ngModel" [class.is-invalid]="coa.touched && coa.invalid" class="form-control" name="coa" [(ngModel)]="bp.costOfTheAsset" (click)="onClick()" placeholder="Cost of Asset"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="coa.valid || coa.untouched" class="text-danger">Required value will be in the range 10 & 999999999</small>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="sv">Salvage Value : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required #sv="ngModel" [class.is-invalid]="sv.touched && sv.invalid" class="form-control" name="sv" [(ngModel)]="bp.salvageValue" (click)="onClick()" placeholder="Salvage Value"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="sv.valid || sv.untouched" class="text-danger">Required</small>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <label for="usefulli">Useful Life Of the Asset : </label>
+                    </div>
+                    <div class="col-auto">
+                    <input type="number" required #usefulli="ngModel" [class.is-invalid]="usefulli.touched && usefulli.invalid" class="form-control" name="usefulli" [(ngModel)]="bp.usefulLifeOfTheAsset" (click)="onClick()" placeholder="Useful Life of the Asset"/>
+                    </div>
+                    <div class="col-auto">
+                        <small [class.d-none]="usefulli.valid || usefulli.untouched" class="text-danger">Required</small>
+                    </div>
+                  </div>
+                  <button [disabled]="createcbForm.form.invalid" (click)="CreateBusiness()" type="submit">Create Business Property</button>
+                
+
+            </form>
+            
+        </div> 
+        </div>
+    </div>
+</div>
+    <p class="text-danger m-2">{{errorMessage}}</p>
+</div>
+</div> 
+</div>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>

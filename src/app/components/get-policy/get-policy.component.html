@@ -1,0 +1,78 @@
+
+  <app-navbar></app-navbar>
+  <h4 style="text-align: center;">View Policy</h4>
+  <notifier-container style="position: fixed; bottom: 100px; right: 30px"></notifier-container>
+  <div class="container-fluid">
+      <div class="row">
+          <div class="wrapper">
+      <form class="form-horizontal" #viewpolicyForm="ngForm" (ngSubmit)="viewPolicy(consumerId,policyId)" id="viewForm">
+          <div class="form-group">
+              <label class="control-label col-sm-2" for="consumerId">Consumer Id :</label>
+              <div class="col-sm-10">
+                <input type="text" required pattern="[C]{1}[0-9]{2}" class="form-control" name="consumerId" [(ngModel)]="consumerId" placeholder="Enter Consumer Id"/>
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="control-label col-sm-2" for="policyId">Policy Id :</label>
+              <div class="col-sm-10">
+                <input type="text" required pattern="[P]{1}[0-9]{2}" class="form-control" name="policyId" [(ngModel)]="policyId" placeholder="Enter Policy Id"/>
+            </div>
+          </div>
+          <div  class="text-center col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" [disabled]="viewpolicyForm.form.invalid" type="submit" data-toggle="modal" data-target="#exampleModal">View Policy</button>
+          </div>
+         
+      </form>
+      
+  </div>
+</div>
+</div>
+  <div style="padding-top:10%" class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>
+                    <table class="table table-bordered">
+                      <h3><strong>Policy Details</strong></h3>
+                      <tbody>
+                        <tr>
+                          <td><strong>Consumer ID </strong></td>
+                          <td>{{consumerPolicy.consumerId}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Business ID </strong></td>
+                          <td>{{consumerPolicy.businessId}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Policy ID  </strong></td>
+                          <td>{{consumerPolicy.policyId}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Accepted Quotes </strong></td>
+                          <td>{{consumerPolicy.acceptedQuotes}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Policy Status </strong></td>
+                          <td>{{consumerPolicy.policyStatus}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Payment Details </strong></td>
+                          <td>{{consumerPolicy.paymentDetails}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Acceptance Status </strong></td>
+                          <td>{{consumerPolicy.acceptanceStatus}}</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Effective Date </strong></td>
+                          <td>{{consumerPolicy.effectiveDate | date : 'mediumTime'}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="/"><button class="btn btn-primary"> Go To Homepage </button></a>
+<div>
